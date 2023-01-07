@@ -9,6 +9,8 @@ when executed from the command line.
 import argparse
 import os
 
+from discordbot.bot import run_bot
+
 
 HELP_DESCRIPTION = "Run the discord bot that you've created."
 HELP_EPILOG = """
@@ -65,7 +67,7 @@ def _token_from_file(path):
     """
     try:
         f = open(path, "r")
-        token = f.readline()
+        token = f.readline().strip()
     except Exception as e:
         return e
     else:
@@ -154,4 +156,5 @@ def main():
     if status != 0:
         return status
     print(f"Running bot with token: {token}")
+    run_bot(token)
     return status
