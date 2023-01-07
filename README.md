@@ -1,0 +1,42 @@
+# RICSS x CDAC Discord Bot (2023)
+
+This repo contains the discord bot with the features taught in class
+implemented.
+
+## Setup
+
+Replace `MY_TOKEN` with your discord bot's token.
+
+### Windows
+
+```bat
+REM setup environment
+git clone https://github.com/RenoirTan/CDACDiscordBot
+cd CDACDiscordBot
+python3 -m venv venv
+venv/bin/Activate.ps1
+pip install --editable .
+
+REM store token into a file
+echo MY_TOKEN> .\token
+
+REM start bot
+python3 -m discordbot -f .\token
+```
+
+### MacOS or Linux
+
+```sh
+# setup environment
+git clone https://github.com/RenoirTan/CDACDiscordBot
+cd CDACDiscordBot
+python3 -m venv venv
+source venv/bin/activate
+pip install --editable .
+
+# store token into a file
+echo 'MY_TOKEN' > ./token
+
+# start bot
+python3 -m discordbot -f ./token
+```
