@@ -3,6 +3,9 @@
 This repo contains the discord bot with the features taught in class
 implemented.
 
+1. [Setup](#setup)
+2. [Todo List](#todo-list)
+
 ## Setup
 
 Replace `MY_TOKEN` with your discord bot's token.
@@ -40,3 +43,13 @@ echo 'MY_TOKEN' > ./token
 # start bot
 python3 -m discordbot -f ./token
 ```
+
+## Todo List
+
+- [x] Structure for a Python package (i.e. pyproject.toml etc.)
+- [x] Can be executed from command line
+- [x] Feature 1: Welcome Message
+- [ ] Feature 2: Parrot
+- [ ] Feature 3: Simple Calculator
+- [ ] Feature 4: Counting Letters
+- [ ] Feature 5: Google Images
