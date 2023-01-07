@@ -54,9 +54,9 @@ def create_argparser():
         epilog=HELP_EPILOG,
         formatter_class=argparse.RawDescriptionHelpFormatter # preserve indentation
     )
-    parser.add_argument("-t", "--token")
-    parser.add_argument("-f", "--token-file")
-    parser.add_argument("-e", "--env")
+    parser.add_argument("-t", "--token", help="discord bot token")
+    parser.add_argument("-f", "--token-file", help="path to file that is storing the token")
+    parser.add_argument("-e", "--env", help="environment variable that is storing the token")
     return parser
 
 
