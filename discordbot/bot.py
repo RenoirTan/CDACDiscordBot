@@ -36,6 +36,19 @@ async def on_member_join(member: discord.Member):
         await system_channel.send(f"<@{member.id}> has joined {member.guild.name}.")
 
 
+# Reply to member with what they said
+@bot.command()
+async def parrot(ctx: commands.Context, *args: str):
+    message = ctx.message.content[8:] # get rid of "!parrot "
+    # we get an error if we try to send a blank message, so we have to handle
+    # that case separately
+    if len(message) == 0:
+        embed = discord.Embed(color=0xFF0000, title="You sent an empty message!")
+        await ctx.send(embed=embed)
+    else:
+        await ctx.send(message)
+
+
 def run_bot(token):
     """
     Run the bot with a provided token.

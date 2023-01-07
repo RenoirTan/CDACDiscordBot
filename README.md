@@ -49,7 +49,7 @@ python3 -m discordbot -f ./token
 - [x] Structure for a Python package (i.e. pyproject.toml etc.)
 - [x] Can be executed from command line
 - [x] Feature 1: Welcome Message
-- [ ] Feature 2: Parrot
+- [x] Feature 2: Parrot
 - [ ] Feature 3: Simple Calculator
 - [ ] Feature 4: Counting Letters
 - [ ] Feature 5: Google Images
