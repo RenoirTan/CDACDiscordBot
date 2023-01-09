@@ -57,6 +57,11 @@ def create_argparser():
     parser.add_argument("-t", "--token", help="discord bot token")
     parser.add_argument("-f", "--token-file", help="path to file that is storing the token")
     parser.add_argument("-e", "--env", help="environment variable that is storing the token")
+    parser.add_argument(
+        "--print-token",
+        action="store_true",
+        help="print token when starting the bot"
+    )
     return parser
 
 
@@ -155,6 +160,8 @@ def main():
         print(f"Couldn't access file: {token}")
     if status != 0:
         return status
-    print(f"Running bot with token: {token}")
+    print_token = namespace.print_token
+    if print_token:
+        print(f"Running bot with token: {token}")
     run_bot(token)
     return status
