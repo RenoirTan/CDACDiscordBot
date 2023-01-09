@@ -86,6 +86,36 @@ async def calc(ctx: commands.Context, arg1: str, operator: str, arg2: str):
     await ctx.send(f"{arg1} {operator} {arg2} = {result}")
 
 
+# Grab all letters in the text that comes after !letters and
+# sum the value of the letters.
+# The value of each letter is their position in the alphabet (e.g. A = 1, B = 2)
+@bot.command()
+async def letters(ctx: commands.Context, *args: str):
+    total = 0
+    
+    # Get each word in the message
+    for word in args:
+        
+        # Get each character in each word
+        for character in word:
+            
+            # if character is not a letter, then skip
+            if not character.isalpha():
+                continue
+            
+            # convert letter to uppercase
+            letter = character.upper()
+            
+            # ord() gets the position of the letter in the ASCII alphabet
+            # the position of uppercase 'A' is 65, so to get the position of
+            # the letter in the normal alphabet, we minus 64 to get 1
+            value = ord(letter) - 64
+            
+            # add to sum
+            total += value
+    await ctx.send(f"Total value: {total}")
+
+
 def run_bot(token):
     """
     Run the bot with a provided token.
