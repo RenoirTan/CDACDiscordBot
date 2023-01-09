@@ -20,6 +20,14 @@ intents.guilds = True # access to guild's stuff
 bot = commands.Bot(command_prefix="!", intents=intents)
 
 
+async def send_error(ctx: commands.Context, message: discord.Embed):
+    """
+    Create an embedded message for an error and then send it.
+    """
+    embed = discord.Embed(color=0xFF0000, title=message)
+    await ctx.send(embed=embed)
+
+
 # What to do when bot has come online
 @bot.event
 async def on_ready():
@@ -43,10 +51,37 @@ async def parrot(ctx: commands.Context, *args: str):
     # we get an error if we try to send a blank message, so we have to handle
     # that case separately
     if len(message) == 0:
-        embed = discord.Embed(color=0xFF0000, title="You sent an empty message!")
-        await ctx.send(embed=embed)
+        await send_error(ctx, "You sent an empty message!")
     else:
         await ctx.send(message)
+
+
+# Calculate the result of an operation on 2 numbers.
+# Example: !calc 1 + 2
+@bot.command()
+async def calc(ctx: commands.Context, arg1: str, operator: str, arg2: str):
+    try:
+        num1 = float(arg1)
+    except:
+        await send_error(ctx, "Your first number is not a number.")
+    try:
+        num2 = float(arg2)
+    except:
+        await send_error(ctx, "Your second number is not a number.")
+    
+    if operator == "+":
+        result = num1 + num2
+    elif operator == "-":
+        result = num1 - num2
+    elif operator == "*":
+        result = num1 * num2
+    elif operator == "/":
+        result = num1 / num2
+    else:
+        await send_error(ctx, "We don't allow that kind of operation yet.")
+        return
+
+    await ctx.send(f"{arg1} {operator} {arg2} = {result}")
 
 
 def run_bot(token):
