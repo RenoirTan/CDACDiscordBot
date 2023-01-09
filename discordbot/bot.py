@@ -32,6 +32,8 @@ async def send_error(ctx: commands.Context, message: discord.Embed):
 @bot.event
 async def on_ready():
     print(f"Logged on as {bot.user}")
+    game = discord.Game("with the API")
+    await bot.change_presence(activity=game)
 
 
 # When a member joins
