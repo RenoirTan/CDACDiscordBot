@@ -52,4 +52,3 @@ python3 -m discordbot -f ./token
 - [x] Feature 2: Parrot
 - [x] Feature 3: Simple Calculator
 - [x] Feature 4: Counting Letters
-- [ ] Feature 5: Google Images
