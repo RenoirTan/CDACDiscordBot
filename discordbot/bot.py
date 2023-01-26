@@ -20,7 +20,7 @@ intents.guilds = True # access to guild's stuff
 bot = commands.Bot(command_prefix="!", intents=intents)
 
 
-async def send_error(ctx: commands.Context, message: discord.Embed):
+async def send_error(ctx: commands.Context, message: str):
     """
     Create an embedded message for an error and then send it.
     """
