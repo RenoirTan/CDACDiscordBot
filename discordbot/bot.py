@@ -85,10 +85,12 @@ async def calc(ctx: commands.Context, arg1: str, operator: str, arg2: str):
         num1 = float(arg1)
     except:
         await send_error(ctx, "Your first number is not a number.")
+        return
     try:
         num2 = float(arg2)
     except:
         await send_error(ctx, "Your second number is not a number.")
+        return
     
     if operator == "+":
         result = num1 + num2
