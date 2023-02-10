@@ -50,7 +50,7 @@ python3 -m discordbot -f ./token
 - [x] Can be executed from command line
 - [x] Feature 1: Welcome Message
 - [x] Feature 2: Parrot
-- [ ] Feature 3: Guess the Number
+- [x] Feature 3: Guess the Number
 - [x] Feature 4: Simple Calculator
 - [ ] Feature 5: Circle Calculator
 - [ ] Feature 6: Railfence Encode

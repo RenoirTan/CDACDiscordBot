@@ -4,6 +4,7 @@
 This module contains functions and other definitions for the discord bot.
 """
 
+from random import randint
 
 import discord
 from discord.ext import commands
@@ -56,6 +57,24 @@ async def parrot(ctx: commands.Context, *args: str):
         await send_error(ctx, "You sent an empty message!")
     else:
         await ctx.send(message)
+
+
+# Guess the number (integer)
+@bot.command()
+async def guess(ctx: commands.Context, guess: str):
+    # number = 7
+    number = randint(0, 9) # 0 to 9 inclusive
+    try:
+        guess = int(guess)
+    except:
+        await send_error(ctx, "guess is not an integer")
+        return
+    if guess < number:
+        await ctx.send("too low")
+    elif guess > number:
+        await ctx.send("too high")
+    else: # guess == number
+        await ctx.send("yay")
 
 
 # Calculate the result of an operation on 2 numbers.
