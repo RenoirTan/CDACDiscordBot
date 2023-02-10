@@ -86,6 +86,7 @@ async def calc(ctx: commands.Context, arg1: str, operator: str, arg2: str):
     await ctx.send(f"{arg1} {operator} {arg2} = {result}")
 
 
+"""
 # Grab all letters in the text that comes after !letters and
 # sum the value of the letters.
 # The value of each letter is their position in the alphabet (e.g. A = 1, B = 2)
@@ -114,6 +115,7 @@ async def letters(ctx: commands.Context, *args: str):
             # add to sum
             total += value
     await ctx.send(f"Total value: {total}")
+"""
 
 
 def run_bot(token):
