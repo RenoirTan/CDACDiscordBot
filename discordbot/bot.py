@@ -4,6 +4,7 @@
 This module contains functions and other definitions for the discord bot.
 """
 
+from math import pi
 from random import randint
 
 import discord
@@ -106,6 +107,44 @@ async def calc(ctx: commands.Context, arg1: str, operator: str, arg2: str):
 
     await ctx.send(f"{arg1} {operator} {arg2} = {result}")
 
+
+# Calculate measurements of circular objects
+@bot.command()
+async def circle(ctx: commands.Context, radius: str):
+    try:
+        radius = float(radius)
+    except:
+        await send_error(ctx, "Radius is not a number")
+        return
+    
+    if radius < 0:
+        await send_error(ctx, "Radius must be at least 0")
+        return
+    
+    diameter = 2 * radius
+    
+    # 2d circle
+    circumference = pi * diameter
+    area = pi * (radius ** 2)
+    semicircle_circumference = pi * radius + diameter
+    
+    # 3d sphere
+    surface_area = 4 * pi * (radius ** 2)
+    volume = 4/3 * pi * (radius ** 3)
+    
+    embed = discord.Embed(color=0x22f89b, title="Circles")
+    embed.add_field(name="Radius", value=f"{radius} units")
+    embed.add_field(name="Diameter", value=f"{diameter} units")
+    embed.add_field(name="Circumference", value=f"{circumference} units")
+    embed.add_field(name="Area", value=f"{area} units²")
+    embed.add_field(
+        name="Circumference of a Semicircle",
+        value=f"{semicircle_circumference} units²"
+    )
+    embed.add_field(name="Surface Area of a Sphere", value=f"{surface_area} units²")
+    embed.add_field(name="Volume of a Sphere", value=f"{volume} units³")
+    await ctx.send(embed=embed)
+    
 
 """
 # Grab all letters in the text that comes after !letters and
