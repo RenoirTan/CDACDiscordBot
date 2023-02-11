@@ -10,7 +10,7 @@ from random import randint
 import discord
 from discord.ext import commands
 
-from discordbot.util import railfence_encode, bubble_sort
+from discordbot.util import railfence_encode, bubble_sort, best_fit_emoji
 
 
 # Permissions to access Discord's API
@@ -18,6 +18,7 @@ intents = discord.Intents.default()
 intents.message_content = True # We want to see what a user has written
 intents.members = True # see members' actions
 intents.guilds = True # access to guild's stuff
+intents.emojis_and_stickers = True
 
 
 # Command prefix (e.g. "!" for !ping)
@@ -197,6 +198,25 @@ async def bubble(ctx: commands.Context, *numbers: str):
     sequence = bubble_sort(sequence)
     s_sequence = list(map(str, sequence))
     await ctx.send("Sorted: " + " ".join(s_sequence))
+
+
+@bot.command()
+async def emojify(ctx: commands.Context, *args: str):
+    message = ctx.message.content[9:] # get rid of "!emojify "
+    # we get an error if we try to send a blank message, so we have to handle
+    # that case separately
+    if len(message) == 0:
+        await send_error(ctx, "You sent an empty message!")
+    else:
+        words = message.split(' ') #gives an array of each word that we can iterate through
+        emojifiedreply = ''
+        # TODO: Still trying to figure out a way to include default emojis
+        options = list(map(lambda e: e.name, await ctx.guild.fetch_emojis()))
+        for word in words:
+            emojifiedreply += word #reconstructs the original message
+            bfe = ":" + best_fit_emoji(word, options) + ":"
+            emojifiedreply += " " + bfe + " " #with the emoji behind it
+        await ctx.send(emojifiedreply)
 
 
 """
