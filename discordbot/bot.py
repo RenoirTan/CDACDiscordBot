@@ -10,7 +10,7 @@ from random import randint
 import discord
 from discord.ext import commands
 
-from discordbot.util import railfence_encode
+from discordbot.util import railfence_encode, bubble_sort
 
 
 # Permissions to access Discord's API
@@ -171,6 +171,26 @@ async def railfence(ctx: commands.Context, n_rails: str, *words: str):
     
     await ctx.send(crypttext)
     
+
+# Sort a list of numbers using bubble sort
+@bot.command()
+async def bubble(ctx: commands.Context, *numbers: str):
+    sequence = []
+    for number in numbers:
+        try:
+            number = float(number)
+        except:
+            await send_error(ctx, f"{number} is not a number")
+            return
+        sequence.append(number)
+    if len(sequence) == 0:
+        await send_error(ctx, "Nothing to sort")
+        return
+
+    sequence = bubble_sort(sequence)
+    s_sequence = list(map(str, sequence))
+    await ctx.send("Sorted: " + " ".join(s_sequence))
+
 
 """
 # Grab all letters in the text that comes after !letters and

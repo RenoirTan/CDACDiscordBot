@@ -54,5 +54,5 @@ python3 -m discordbot -f ./token
 - [x] Feature 4: Simple Calculator
 - [x] Feature 5: Circle Calculator
 - [x] Feature 6: Railfence Encode
-- [ ] Feature 7: Bubble Sort
+- [x] Feature 7: Bubble Sort
 - [ ] Feature 8: Emojifier

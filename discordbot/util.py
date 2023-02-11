@@ -83,3 +83,31 @@ def railfence_encode(n_rails: int, plaintext: str) -> str:
     
     # Send output back to calling function
     return output
+
+
+def bubble_sort(sequence):
+    """
+    Sort a sequence in ascending order using the bubble sort algorithm.
+    """
+    seq_len = len(sequence)
+    ordered = False
+    
+    # Continue sorting until the list is sorted
+    while not ordered:
+        # Assume sequence is already sorted
+        ordered = True
+        # Go through each number in the sequence
+        for i in range(seq_len-1):
+            # If this number is greater than the number after it, then swap
+            if sequence[i] > sequence[i+1]:
+                # The sequence was not already ordered correctly
+                # So we set ordered to False to tell the while loop
+                # to go through the list one more time to check
+                ordered = False
+                temp = sequence[i]
+                sequence[i] = sequence[i+1]
+                sequence[i+1] = temp
+    
+    # Technically not necessary as lists are "pass by reference" in Python
+    # See https://realpython.com/python-pass-by-reference/ to find out more
+    return sequence
