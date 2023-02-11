@@ -10,6 +10,8 @@ from random import randint
 import discord
 from discord.ext import commands
 
+from discordbot.util import railfence_encode
+
 
 # Permissions to access Discord's API
 intents = discord.Intents.default()
@@ -144,6 +146,29 @@ async def circle(ctx: commands.Context, radius: str):
     embed.add_field(name="Surface Area of a Sphere", value=f"{surface_area} units²")
     embed.add_field(name="Volume of a Sphere", value=f"{volume} units³")
     await ctx.send(embed=embed)
+
+
+# Convert plaintext to crypttext using railfence encoding
+@bot.command()
+async def railfence(ctx: commands.Context, n_rails: str, *words: str):
+    try:
+        n_rails = int(n_rails)
+    except:
+        await send_error(ctx, "Rails must be a positive integer")
+        return
+    if n_rails <= 0:
+        await send_error(ctx, "Rails must be a positive integer")
+        return
+    
+    plaintext = "".join(words)
+    
+    if len(plaintext) == 0:
+        await send_error(ctx, "Your message cannot be empty")
+        return
+    
+    crypttext = railfence_encode(n_rails, plaintext)
+    
+    await ctx.send(crypttext)
     
 
 """
