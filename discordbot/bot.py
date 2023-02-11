@@ -166,6 +166,7 @@ async def railfence(ctx: commands.Context, n_rails: str, *words: str):
         await send_error(ctx, "Your message cannot be empty")
         return
     
+    # See util.py
     crypttext = railfence_encode(n_rails, plaintext)
     
     await ctx.send(crypttext)
