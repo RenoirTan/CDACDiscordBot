@@ -50,6 +50,13 @@ async def on_member_join(member: discord.Member):
         await system_channel.send(f"<@{member.id}> has joined {member.guild.name}.")
 
 
+# Ping the bot
+@bot.command()
+async def ping(ctx):
+	x = round(bot.latency*1000)
+	await ctx.send(f'Your latency is {x} ms')
+
+
 # Reply to member with what they said
 @bot.command()
 async def parrot(ctx: commands.Context, *args: str):
