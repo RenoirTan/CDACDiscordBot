@@ -10,7 +10,7 @@ from random import randint
 import discord
 from discord.ext import commands
 
-from discordbot.util import railfence_encode, bubble_sort
+from discordbot.util import railfence_encode, bubble_sort, best_fit_emoji, emoji_list
 
 
 # Permissions to access Discord's API
@@ -18,6 +18,7 @@ intents = discord.Intents.default()
 intents.message_content = True # We want to see what a user has written
 intents.members = True # see members' actions
 intents.guilds = True # access to guild's stuff
+intents.emojis_and_stickers = True
 
 
 # Command prefix (e.g. "!" for !ping)
@@ -48,6 +49,13 @@ async def on_member_join(member: discord.Member):
     # Check if we are allowed to send messages
     if system_channel.permissions_for(member.guild.me).send_messages:
         await system_channel.send(f"<@{member.id}> has joined {member.guild.name}.")
+
+
+# Ping the bot
+@bot.command()
+async def ping(ctx):
+	x = round(bot.latency*1000)
+	await ctx.send(f'Your latency is {x} ms')
 
 
 # Reply to member with what they said
@@ -190,6 +198,24 @@ async def bubble(ctx: commands.Context, *numbers: str):
     sequence = bubble_sort(sequence)
     s_sequence = list(map(str, sequence))
     await ctx.send("Sorted: " + " ".join(s_sequence))
+
+
+@bot.command()
+async def emojify(ctx: commands.Context, *args: str):
+    message = ctx.message.content[9:] # get rid of "!emojify "
+    # we get an error if we try to send a blank message, so we have to handle
+    # that case separately
+    if len(message) == 0:
+        await send_error(ctx, "You sent an empty message!")
+    else:
+        words = message.split(' ') #gives an array of each word that we can iterate through
+        emojifiedreply = ''
+        options = emoji_list()
+        for word in words:
+            emojifiedreply += word #reconstructs the original message
+            bfe = best_fit_emoji(word, options)
+            emojifiedreply += " " + bfe + " " #with the emoji behind it
+        await ctx.send(emojifiedreply)
 
 
 """

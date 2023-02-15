@@ -1,3 +1,6 @@
+import difflib
+from .emojis import emojis
+
 def railfence_encode(n_rails: int, plaintext: str) -> str:
     """
     Encodes a plaintext string into crypttext using the railfence cipher. This
@@ -111,3 +114,16 @@ def bubble_sort(sequence):
     # Technically not necessary as lists are "pass by reference" in Python
     # See https://realpython.com/python-pass-by-reference/ to find out more
     return sequence
+
+
+def emoji_list():
+    return list(emojis.keys())
+
+
+def best_fit_emoji(word, options):
+    possibilities = difflib.get_close_matches(word, options, 1, 0.6)
+    if possibilities != []:
+        emoji_name = possibilities[0]
+        return emojis[emoji_name]
+    else:
+        return ''
