@@ -44,6 +44,10 @@ echo 'MY_TOKEN' > ./token
 python3 -m discordbot -f ./token
 ```
 
+### Generating `discordbot/emojis.py`
+
+The repo should already have `emojis.py` premade already. However if it's not there or you want to recreate it, you can generate a new file if you want. If you are on macOS or Linux, just run the script at `utils/get-emojis/get-emojis.sh`. There is no script for Windows just yet.
+
 ## Todo List
 
 - [x] Structure for a Python package (i.e. pyproject.toml etc.)
@@ -55,4 +59,4 @@ python3 -m discordbot -f ./token
 - [x] Feature 5: Circle Calculator
 - [x] Feature 6: Railfence Encode
 - [x] Feature 7: Bubble Sort
-- [ ] Feature 8: Emojifier
+- [x] Feature 8: Emojifier
