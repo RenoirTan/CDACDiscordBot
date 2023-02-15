@@ -19,4 +19,5 @@ with open(sys.argv[1], newline="") as c:
         emojis[name] = emoji
 
 # Print the emojis dictionary to stdout here so that we can pipe into discordbot/emojis.py
+print("emojis = ", end="")
 pprint(emojis, indent=4)

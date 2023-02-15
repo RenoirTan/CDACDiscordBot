@@ -10,7 +10,7 @@ from random import randint
 import discord
 from discord.ext import commands
 
-from discordbot.util import railfence_encode, bubble_sort, best_fit_emoji
+from discordbot.util import railfence_encode, bubble_sort, best_fit_emoji, emoji_list
 
 
 # Permissions to access Discord's API
@@ -210,11 +210,10 @@ async def emojify(ctx: commands.Context, *args: str):
     else:
         words = message.split(' ') #gives an array of each word that we can iterate through
         emojifiedreply = ''
-        # TODO: Still trying to figure out a way to include default emojis
-        options = list(map(lambda e: e.name, await ctx.guild.fetch_emojis()))
+        options = emoji_list()
         for word in words:
             emojifiedreply += word #reconstructs the original message
-            bfe = ":" + best_fit_emoji(word, options) + ":"
+            bfe = best_fit_emoji(word, options)
             emojifiedreply += " " + bfe + " " #with the emoji behind it
         await ctx.send(emojifiedreply)
 

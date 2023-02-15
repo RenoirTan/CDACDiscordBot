@@ -1,4 +1,5 @@
 import difflib
+from .emojis import emojis
 
 def railfence_encode(n_rails: int, plaintext: str) -> str:
     """
@@ -115,9 +116,14 @@ def bubble_sort(sequence):
     return sequence
 
 
+def emoji_list():
+    return list(emojis.keys())
+
+
 def best_fit_emoji(word, options):
     possibilities = difflib.get_close_matches(word, options, 1, 0.6)
     if possibilities != []:
-        return possibilities[0]
+        emoji_name = possibilities[0]
+        return emojis[emoji_name]
     else:
         return ''

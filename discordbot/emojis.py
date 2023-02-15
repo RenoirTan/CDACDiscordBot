@@ -1,4 +1,4 @@
-{   '1st place medal': '🥇',
+emojis = {   '1st place medal': '🥇',
     '2nd place medal': '🥈',
     '3rd place medal': '🥉',
     'A button blood type': '🅰',
