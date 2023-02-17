@@ -156,6 +156,28 @@ async def circle(ctx: commands.Context, radius: str):
     await ctx.send(embed=embed)
 
 
+@bot.command()
+async def fizzbuzz(ctx: commands.Context, limit: str):
+    try:
+        limit = int(limit)
+    except:
+        await send_error(ctx, "Limits must be a positive integer")
+        return
+    if limit <= 0:
+        await send_error(ctx, "Limits must be a positive integer")
+        return
+    
+    message = ""
+    for i in range(limit):
+        message += str(i)
+        if i % 3 == 0:
+            message += "Fizz"
+        if i % 5 == 0:
+            message += "Buzz"
+        message += "\n"
+    await ctx.send(message)
+
+
 # Convert plaintext to crypttext using railfence encoding
 @bot.command()
 async def railfence(ctx: commands.Context, n_rails: str, *words: str):
