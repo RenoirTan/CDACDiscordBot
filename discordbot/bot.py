@@ -54,8 +54,7 @@ async def on_member_join(member: discord.Member):
 # Ping the bot
 @bot.command()
 async def ping(ctx):
-	x = round(bot.latency*1000)
-	await ctx.send(f'Your latency is {x} ms')
+	await ctx.send('Pong')
 
 
 # Reply to member with what they said
