@@ -11,6 +11,10 @@ Run `cd <location>`, substituting in the location you copied just now.
 Run `pip install -e .` to install dependencies. Note that there is a fullstop "." after "-e".
 
 Run the discord bot:
-In your terminal, run `python discordbot/__main__.py -f token`
+In your terminal, run `python discordbot/bot.py`
 If python complains of files not existing, your terminal might be in a different folder. You can rectify this by running `cd <location>`. See "Setup the discord bot" for more info.
-The error may also be a result of a missing token file. If your token file is not named "token", you could either rename the file or run `python discordbot/__main__.py -f <filename>`, replacing <filename> with the name of your token file. However, if your token is currently not stored somewhere in the discord bot folder, you will have to get a new token from the discord developer portal.
+If python says "ModuleNotFoundError: No module named discordbot.secrets", it means that your token is currently not stored in a file called `secrets.py` in the `discordbot` folder. In this case, you should create `discordbot/secrets.py` with the token. `secrets.py` should like this, with the placeholder replaced with your token:
+
+```
+token = "<INSERT YOUR TOKEN HERE>"
+```
