@@ -1,0 +1,16 @@
+INSTRUCTIONS FOR STUDENTS
+
+Make sure the programs following are installed:
+Python (Version 3.8 or later)
+Pip (run `pip --version` in the terminal to check if it's working)
+
+Setup the discord bot:
+Open a terminal (Powershell in Windows, Terminal in MacOS).
+Copy the location of the discord bot folder. In Windows, it may look something like `C:\Users\username\Downloads\discord-bot-template`. On MacOS, the location may resemble `/Users/username/Downloads/discord-bot-template`.
+Run `cd <location>`, substituting in the location you copied just now.
+Run `pip install -e .` to install dependencies. Note that there is a fullstop "." after "-e".
+
+Run the discord bot:
+In your terminal, run `python discordbot/__main__.py -f token`
+If python complains of files not existing, your terminal might be in a different folder. You can rectify this by running `cd <location>`. See "Setup the discord bot" for more info.
+The error may also be a result of a missing token file. If your token file is not named "token", you could either rename the file or run `python discordbot/__main__.py -f <filename>`, replacing <filename> with the name of your token file. However, if your token is currently not stored somewhere in the discord bot folder, you will have to get a new token from the discord developer portal.
