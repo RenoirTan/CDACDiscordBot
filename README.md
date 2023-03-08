@@ -53,12 +53,11 @@ The repo should already have `emojis.py` premade already. However if it's not th
 
 - [x] Structure for a Python package (i.e. pyproject.toml etc.)
 - [x] Can be executed from command line
-- [x] Feature 1: Welcome Message
-- [x] Feature 2: Parrot
+- [x] Feature 1: Ping
+- [x] Feature 2: Calculator
 - [x] Feature 3: Guess the Number
-- [x] Feature 4: Simple Calculator
-- [x] Feature 5: Circle Calculator
-- [x] Feature 5a: FizzBuzz
-- [x] Feature 6: Railfence Encode
-- [x] Feature 7: Bubble Sort
+- [x] Feature 4: Parrot
+- [x] Feature 5: FizzBuzz
+- [x] Feature 6: Bubble Sort
+- [x] Feature 7: Railfence Encode
 - [x] Feature 8: Emojifier
