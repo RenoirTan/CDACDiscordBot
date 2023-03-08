@@ -8,26 +8,27 @@ implemented.
 
 ## Setup
 
-Replace `MY_TOKEN` with your discord bot's token.
+**IMPORTANT!!**
+In the examples below, replace `MY_TOKEN` with your discord bot's token.
 
-### Windows
+### Windows (Powershell)
 
 ```bat
 REM setup environment
 git clone https://github.com/RenoirTan/CDACDiscordBot
 cd CDACDiscordBot
 python3 -m venv venv
-venv/bin/Activate.ps1
+venv\bin\Activate.ps1
 pip install --editable .
 
-REM store token into a file
-echo MY_TOKEN> .\token
+# store your token in a file called secrets.py
+echo token="MY_TOKEN" > .\discordbot\secrets.py
 
 REM start bot
-python3 -m discordbot -f .\token
+python3 discordbot\bot.py
 ```
 
-### MacOS or Linux
+### MacOS or Linux (Bash or Zsh)
 
 ```sh
 # setup environment
@@ -37,11 +38,11 @@ python3 -m venv venv
 source venv/bin/activate
 pip install --editable .
 
-# store token into a file
-echo 'MY_TOKEN' > ./token
+# store your token in a file called secrets.py
+echo 'token="MY_TOKEN"' > ./discordbot/secrets.py
 
 # start bot
-python3 -m discordbot -f ./token
+python3 discordbot/bot.py
 ```
 
 ### Generating `discordbot/emojis.py`
