@@ -117,44 +117,6 @@ async def calc(ctx: commands.Context, arg1: str, operator: str, arg2: str):
     await ctx.send(f"{arg1} {operator} {arg2} = {result}")
 
 
-# Calculate measurements of circular objects
-@bot.command()
-async def circle(ctx: commands.Context, radius: str):
-    try:
-        radius = float(radius)
-    except:
-        await send_error(ctx, "Radius is not a number")
-        return
-    
-    if radius < 0:
-        await send_error(ctx, "Radius must be at least 0")
-        return
-    
-    diameter = 2 * radius
-    
-    # 2d circle
-    circumference = pi * diameter
-    area = pi * (radius ** 2)
-    semicircle_circumference = pi * radius + diameter
-    
-    # 3d sphere
-    surface_area = 4 * pi * (radius ** 2)
-    volume = 4/3 * pi * (radius ** 3)
-    
-    embed = discord.Embed(color=0x22f89b, title="Circles")
-    embed.add_field(name="Radius", value=f"{radius} units")
-    embed.add_field(name="Diameter", value=f"{diameter} units")
-    embed.add_field(name="Circumference", value=f"{circumference} units")
-    embed.add_field(name="Area", value=f"{area} units²")
-    embed.add_field(
-        name="Circumference of a Semicircle",
-        value=f"{semicircle_circumference} units²"
-    )
-    embed.add_field(name="Surface Area of a Sphere", value=f"{surface_area} units²")
-    embed.add_field(name="Volume of a Sphere", value=f"{volume} units³")
-    await ctx.send(embed=embed)
-
-
 @bot.command()
 async def fizzbuzz(ctx: commands.Context, limit: str):
     try:
@@ -237,38 +199,6 @@ async def emojify(ctx: commands.Context, *args: str):
             bfe = best_fit_emoji(word, options)
             emojifiedreply += " " + bfe + " " #with the emoji behind it
         await ctx.send(emojifiedreply)
-
-
-"""
-# Grab all letters in the text that comes after !letters and
-# sum the value of the letters.
-# The value of each letter is their position in the alphabet (e.g. A = 1, B = 2)
-@bot.command()
-async def letters(ctx: commands.Context, *args: str):
-    total = 0
-    
-    # Get each word in the message
-    for word in args:
-        
-        # Get each character in each word
-        for character in word:
-            
-            # if character is not a letter, then skip
-            if not character.isalpha():
-                continue
-            
-            # convert letter to uppercase
-            letter = character.upper()
-            
-            # ord() gets the position of the letter in the ASCII alphabet
-            # the position of uppercase 'A' is 65, so to get the position of
-            # the letter in the normal alphabet, we minus 64 to get 1
-            value = ord(letter) - 64
-            
-            # add to sum
-            total += value
-    await ctx.send(f"Total value: {total}")
-"""
 
 
 # Run the bot
