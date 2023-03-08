@@ -271,8 +271,7 @@ async def letters(ctx: commands.Context, *args: str):
 """
 
 
-def run_bot(token):
-    """
-    Run the bot with a provided token.
-    """
-    bot.run(token)
+# Run the bot
+from discordbot.secrets import token
+
+bot.run(token)
